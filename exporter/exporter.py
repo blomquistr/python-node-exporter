@@ -39,7 +39,7 @@ class Exporter():
 
         # poll the stream for logs
         p = select.poll()
-        p.register(j, j.get_events())
+        p.register(self.reader, self.reader.get_events())
 
         self.logger.debug("Polling for events...")
         while p.poll():
