@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools ~= 59.6.0", "wheel ~= 0.38.4"] 
+
+[project]
+name = "python-node-kubelet-exporter"
+version = "0.0.1"
+description = "A Python app to read systemd logs off of an AKS Kubernetes node and pipe them to stdout"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {file = "LICENSE"}
+authors = [
+    {email = "blomquist.r@gmail.com", name = "Ryan Blomquist"}
+]
+maintainers = [
+    {name = "Ryan Blomquist", email = "blomquist.r@gmail.com"}
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python"
+]
+
+dependencies = [
+    "systemd-python>=235"
+]

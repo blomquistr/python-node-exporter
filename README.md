@@ -1,3 +1,3 @@
 # Python Node Log Exporter
 
-This daemonset is meant to be deployed to a Kubernetes cluster to pull logs from a `systemd`-managed `kubelet`.
+A simple Python script to export systemd logs from a Kubernetes node; useful for the AKS Kubelet logs if you're sending them somewhere other than Log Analytics

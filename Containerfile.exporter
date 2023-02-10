@@ -1,0 +1,21 @@
+FROM docker.io/python3.8.16-slim-bullseye
+
+# create a virtualenv for dependencies
+RUN python3 -m venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
+
+# change to the working directory, copy the app, and build it
+WORKDIR $USER_AGENT_HOME
+COPY . .
+RUN pip3 install .
+
+# app configuration args
+ARG EXPORTER_SYSTEMD_LOG_LEVEL="INFO"
+ARG EXPORTER_SYSTEMD_TARGET="kubelet"
+
+# app configuration env variables
+ENV EXPORTER_SYSTEMD_LOG_LEVEL=$EXPORTER_SYSTEMD_LOG_LEVEL
+ENV EXPORTER_SYSTEMD_TARGET=$EXPORTER_SYSTEMD_TARGET
+
+# run the container
+CMD ["./exporter/exporter.py -l $EXPORTER_SYSTEMD_LOG_LEVEL -t $EXPORTER_SYSTEMD_TARGET"]
