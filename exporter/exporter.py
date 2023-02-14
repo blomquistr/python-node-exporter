@@ -59,7 +59,7 @@ class Exporter:
                 self.logger.debug("Found non-append event, continuing...")
                 continue
 
-            for entry in j:
+            for entry in self.reader:
                 self.logger.debug("Received entry [%s]", entry)
                 if entry["MESSAGE"]:
                     print(f"{entry['__REALTIME_TIMESTAMP']} {entry['MESSAGE']}")
